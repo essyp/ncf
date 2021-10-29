@@ -1104,7 +1104,7 @@ class AdminController extends Controller
     }
 
     public function getTeams() {
-        $data = Team::whereNull('ministry_id')->orderBy('id', 'desc')->get();
+        $data = Team::orderBy('id', 'desc')->get();
         return view('admin/teams', compact('data'));
     }
 
@@ -1118,7 +1118,6 @@ class AdminController extends Controller
 
 		$item = new Team();
         $item->name = $request->name;
-        $item->ministry_id = $request->ministry_id;
         $item->position = $request->position;
         $item->description = $request->description;
         $item->facebook = $request->facebook;
@@ -1157,7 +1156,6 @@ class AdminController extends Controller
 
 		$item = Team::where('id',$request->id)->first();
         $item->name = $request->name;
-        $item->ministry_id = $request->ministry_id;
         $item->position = $request->position;
         $item->description = $request->description;
         $item->facebook = $request->facebook;

@@ -113,10 +113,10 @@
                     </li>
                     <li class="active"><a href="{{url('/admin/')}}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
                     <li>
-                        <a href=""><i class="fa fa-info"></i><span>Ministry Setup</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <a href=""><i class="fa fa-info"></i><span>Business Setup</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="nav nav-sub">
                             <li class="nav-sub-header"><a href=""><span>Setup</span></a></li>
-                            <li><a href="{{url('/admin/ministry-setup')}}"><span> Setup</span></a></li>
+                            <li><a href="{{url('/admin/business-setup')}}"><span> Setup</span></a></li>
                             <li><a href="{{url('/admin/social-accounts')}}"><span>Social Accounts</span></a></li>
                             <li><a href="{{url('/admin/messaging-settings')}}"><span>Mail Settings</span></a></li>
                         </ul>
@@ -125,28 +125,7 @@
                     <li class="nav-head">
                         <h5 class="nav-title text-uppercase light-txt">Layouts</h5>
                     </li>
-                    <li>
-                        <a href=""><i class="fa fa-th-large"></i><span>Ministry</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="nav nav-sub">
-                            <li class="nav-sub-header"><a href=""><span>Ministry</span></a></li>
-                            <li><a href="{{url('/admin/ministries')}}"><span>Service Teams</span></a></li>
-                            <li><a href="{{url('/admin/parish-messages')}}"><span>Parish Message</span></a></li>
-                            <li><a href="{{url('/admin/events')}}"><span>Events</span></a></li>
-                            <li><a href="{{url('/admin/gallery')}}"><span>Gallery</span></a></li>
-                            <li><a href="{{url('/admin/benefits')}}"><span>Benefits</span></a></li>
-                            <li><a href="{{url('/admin/messages')}}"><span>Messages</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href=""><i class="fa fa-th-large"></i><span>Activities</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="nav nav-sub">
-                            <li class="nav-sub-header"><a href=""><span>Activities</span></a></li>
-                            <li><a href="{{url('/admin/activities')}}"><span>Activity Category</span></a></li>
-                            <li><a href="{{url('/admin/programmes')}}"><span>Activities</span></a></li>
-                        </ul>
-                    </li>
-                   
+                                       
                     <li>
                         <a href=""><i class="fa fa-shopping-cart"></i><span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="nav nav-sub">
@@ -180,7 +159,6 @@
                         <ul class="nav nav-sub">
                             <li class="nav-sub-header"><a href=""><span>Leadership Team</span></a></li>
                             <li><a href="{{url('/admin/teams')}}"><span>Current Leadership</span></a></li>
-                            <li><a href="{{url('/admin/past-teams')}}"><span>Past Leadership</span></a></li>
                         </ul>
                     </li>
                     <li>

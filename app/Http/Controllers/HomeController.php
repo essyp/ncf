@@ -15,14 +15,12 @@ use Session;
 use GuzzleHttp\Exception\GuzzleException;
 use DB;
 use App\Models\Banner;
-use App\Models\Ministry;
 use App\Models\Event;
 use App\Models\Blog;
 use App\Models\Testimony;
 use App\Models\ParishMessage;
 use App\Models\Company;
 use App\Models\Team;
-use App\Models\PastTeam;
 use App\Models\Gallery;
 use App\Models\Enquiry;
 use App\Models\User;
@@ -34,61 +32,10 @@ use App\Models\PaymentGateway;
 use App\Models\Newsletter;
 use App\Models\Donation;
 use App\Models\Benefit;
-use App\Models\Activity;
 use App\Models\Message;
 
 class HomeController extends Controller
 {
-    public function getHome() {
-        $banner = Banner::where('status',1)->orderBy('id', 'DESC')->get();
-        $ministry = Ministry::where('status',1)->where('featured',1)->limit(4)->get();
-        $events = Event::where('status',1)->orderBy('start_date', 'desc')->limit(2)->get();
-        $blog = Blog::where('status',1)->where('featured',1)->limit(3)->get();
-        $testimony = Testimony::where('status',1)->where('featured',1)->get();
-        $message = ParishMessage::where('status',1)->first();
-        return view('front/index', compact('banner','ministry','events','blog','testimony','message'));
-    }
-
-    public function getAbout() {
-        $com = Company::first();
-        return view('front/about', compact('com'));
-    }
-
-    public function getDonation() {
-        $com = Company::first();
-        return view('front/donation', compact('com'));
-    }
-
-    public function getContact() {
-        $com = Company::first();
-        return view('front/contact', compact('com'));
-    }
-
-    public function getTeams() {
-        $teams = Team::whereNull('ministry_id')->where('status',1)->get();
-        return view('front/teams', compact('teams'));
-    }
-
-    public function getPastTeams() {
-        $teams = PastTeam::where('status',1)->paginate(20);
-        return view('front/past-teams', compact('teams'));
-    }
-
-    public function getTeamDetail($id) {
-        $team = Team::where('slug',$id)->first();
-        return view('front/team-details', compact('team'));
-    }
-
-    public function getTestimonies() {
-        $testimony = Testimony::where('status',1)->orderBy('id', 'desc')->paginate(12);
-        return view('front/testimonies', compact('testimony'));
-    }
-
-    public function getTestimonyDetails($id) {
-        $testimony = Testimony::where('slug',$id)->first();
-        return view('front/testimony-details', compact('testimony'));
-    }
-
     public function sendEnquiry(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email', 'min:7', 'max:80', 'regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/'],
@@ -141,14 +88,6 @@ class HomeController extends Controller
         });
     }   
 
-    public function getOrderView(Request $request){
-        $id = $request->id;
-        $order = Order::where('id',$request->id)->first();
-        $ref = Payment::where('order_id',$request->id)->first();
-        return view('user/order-view', compact('order','ref'));
-    
-    }    
-    
     public function order(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email', 'min:7', 'max:80', 'regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/'],
@@ -341,16 +280,6 @@ class HomeController extends Controller
 
     }
 
-    public function donationStatus($ref){
-        if($ref){
-            $status=Payment::where('transaction_id', $ref)->firstOrFail();
-            return view('front/donation-status', compact('status'));
-        }else{
-            return redirect('/');
-        }
-
-    }
-
     public function newsLetter(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email',
@@ -466,39 +395,5 @@ class HomeController extends Controller
             return Response::json($response); //return status response as json
         }
     }
-
-    public function getGallery() {
-        $gallery = Gallery::where('status',1)->paginate(28);
-        return view('front/gallery', compact('gallery'));
-    }
-
-    public function getMembers() {
-        $data = User::where('status',1)->where('type','member')->paginate(24);
-        return view('front/members', compact('data'));
-    }
-
-    public function getHistory() {
-        $com = Company::first();
-        return view('front/history', compact('com'));
-    }
-
-    public function getBenefits() {
-        $data = Benefit::where('status',1)->orderBy('id','desc')->get();
-        return view('front/benefits', compact('data'));
-    }
-
-    public function getHowToBecome() {
-        $com = Company::first();
-        return view('front/how-to-become', compact('com'));
-    }
-
-    public function getVideoMessages() {
-        $data = Message::where('status',1)->where('type','video')->orderBy('id','desc')->paginate(18);
-        return view('front/video-messages', compact('data'));
-    }
-
-    public function getAudioMessages() {
-        $data = Message::where('status',1)->where('type','audio')->orderBy('id','desc')->paginate(18);
-        return view('front/audio-messages', compact('data'));
-    }
+    
 }
