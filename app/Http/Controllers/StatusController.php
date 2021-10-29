@@ -18,9 +18,6 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Blog;
-use App\Models\Ministry;
-use App\Models\MinistryActivity;
-use App\Models\MinistryExco;
 use App\Models\Payment;
 use App\Models\PaymentGateway;
 use App\Models\Event;
@@ -29,7 +26,6 @@ use App\Models\BlogCategory;
 use App\Models\Company;
 use App\Models\ProductCategory;
 use App\Models\Banner;
-use App\Models\Programme;
 use App\Models\Bank;
 use App\Models\Donation;
 use App\Models\ParishMessage;
@@ -37,10 +33,8 @@ use App\Models\Enquiry;
 use App\Models\Newsletter;
 use App\Models\Testimony;
 use App\Models\Team;
-use App\Models\PastTeam;
 use App\Models\Gallery;
 use App\Models\Benefit;
-use App\Models\Activity;
 use App\Models\Message;
 
 class StatusController extends Controller
@@ -62,124 +56,6 @@ class StatusController extends Controller
 		$log->computer_ip = $computer_ip;
 		$log->session_id = $sess;
 		$log->save();
-    }
-
-    public function ministry(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|array',
-            'id.*' => 'required',
-        ]);
-        if ($validator->fails()){
-            $response = array(
-                "status" => "unsuccessful",
-                "message" => $validator->messages()->first(),
-                );
-                return Response::json($response);
-        }
-        $id = $request->id;
-       
-		if($request->submit == "active") {
-            foreach ($id as $idd) {
-                Ministry::where('id',$idd)->update(array('status' => ACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = Ministry::where('id',$idd)->first();
-                $this->log("activated ministry with name - $log->name");
-            }   
-        }elseif($request->submit == "inactive"){
-            foreach ($id as $idd) {
-                Ministry::where('id',$idd)->update(array('status' => INACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = Ministry::where('id',$idd)->first();
-                $this->log("deactivated ministry with name - $log->name");
-            }
-        }elseif($request->submit == "featured"){
-            foreach ($id as $idd) {
-                Ministry::where('id',$idd)->update(array('featured' => YES));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = Ministry::where('id',$idd)->first();
-                $this->log("featured ministry with name - $log->name");
-            }
-        }elseif($request->submit == "unfeatured"){
-            foreach ($id as $idd) {
-                Ministry::where('id',$idd)->update(array('featured' => NO));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = Ministry::where('id',$idd)->first();
-                $this->log("unfeatured ministry with name - $log->name");
-            }
-        }elseif($request->submit == "delete"){
-            foreach ($id as $idd) {
-                $log = Ministry::where('id',$idd)->first();
-                $this->log("deleted ministry with name - $log->name");
-                Ministry::where('id',$idd)->delete();
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                
-            }
-        }
-		return Response::json($response);
-    }
-
-    public function programme(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|array',
-            'id.*' => 'required',
-        ]);
-        if ($validator->fails()){
-            $response = array(
-                "status" => "unsuccessful",
-                "message" => $validator->messages()->first(),
-                );
-                return Response::json($response);
-        }
-        $id = $request->id;
-       
-		if($request->submit == "active") {
-            foreach ($id as $idd) {
-                Programme::where('id',$idd)->update(array('status' => ACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = Programme::where('id',$idd)->first();
-                $this->log("activated ministry programme with title - $log->title");
-            }   
-        }elseif($request->submit == "inactive"){
-            foreach ($id as $idd) {
-                Programme::where('id',$idd)->update(array('status' => INACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = Programme::where('id',$idd)->first();
-                $this->log("deactivated programme with title - $log->title");
-            }
-        } elseif($request->submit == "delete"){
-            foreach ($id as $idd) {
-                $log = Programme::where('id',$idd)->first();
-                $this->log("deleted programme with title - $log->title");
-                Programme::where('id',$idd)->delete();
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                
-            }
-        }
-		return Response::json($response);
     }
 
     public function broadcast(Request $request) {
@@ -937,55 +813,6 @@ class StatusController extends Controller
 		return Response::json($response);
     }
 
-    public function pastTeam(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|array',
-            'id.*' => 'required',
-        ]);
-        if ($validator->fails()){
-            $response = array(
-                "status" => "unsuccessful",
-                "message" => $validator->messages()->first(),
-                );
-                return Response::json($response);
-        }
-        $id = $request->id;
-       
-		if($request->submit == "active") {
-            foreach ($id as $idd) {
-                PastTeam::where('id',$idd)->update(array('status' => ACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = PastTeam::where('id',$idd)->first();
-                $this->log("activated past team member with name - $log->name");
-            }   
-        }elseif($request->submit == "inactive"){
-            foreach ($id as $idd) {
-                PastTeam::where('id',$idd)->update(array('status' => INACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                $log = PastTeam::where('id',$idd)->first();
-                $this->log("deactivated past team member with name - $log->name");
-            }
-        }elseif($request->submit == "delete"){
-            foreach ($id as $idd) {
-                $log = PastTeam::where('id',$idd)->first();
-                $this->log("deleted past team member with name - $log->name");
-                PastTeam::where('id',$idd)->delete();
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                
-            }
-        }
-		return Response::json($response);
-    }
-
     public function gallery(Request $request) {
         $validator = Validator::make($request->all(), [
             'id' => 'required|array',
@@ -1062,49 +889,6 @@ class StatusController extends Controller
         }elseif($request->submit == "delete"){
             foreach ($id as $idd) {
                 Benefit::where('id',$idd)->delete();
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-                
-            }
-        }
-		return Response::json($response);
-    }
-
-    public function activity(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|array',
-            'id.*' => 'required',
-        ]);
-        if ($validator->fails()){
-            $response = array(
-                "status" => "unsuccessful",
-                "message" => $validator->messages()->first(),
-                );
-                return Response::json($response);
-        }
-        $id = $request->id;
-       
-		if($request->submit == "active") {
-            foreach ($id as $idd) {
-                Activity::where('id',$idd)->update(array('status' => ACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-            }   
-        }elseif($request->submit == "inactive"){
-            foreach ($id as $idd) {
-                Activity::where('id',$idd)->update(array('status' => INACTIVE));
-                $response = array(
-                    "status" => "success",
-                    "message" => "Operation Successful",
-                );
-            }
-        }elseif($request->submit == "delete"){
-            foreach ($id as $idd) {
-                Activity::where('id',$idd)->delete();
                 $response = array(
                     "status" => "success",
                     "message" => "Operation Successful",
