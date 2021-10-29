@@ -64,7 +64,6 @@
                                                 <th>Full Name</th>
                                                 <th>Email</th>
                                                 <th>Phone Number</th>
-                                                <th>User Type</th>
                                                 <th>Address</th>
                                                 <th>Status</th>
                                             </tr>
@@ -81,7 +80,6 @@
                                                 <td>{{$bl->fname}} {{$bl->lname}}</td>
                                                 <td>{{$bl->email}}</td>
                                                 <td>{{$bl->tel}}</td>
-                                                <td>{{$bl->type}}</td>
                                                 <td>{{$bl->address}}</td>
                                                 @if($bl->status==ACTIVE)
                                                 <td><span class="label label-success">Active</span></td>

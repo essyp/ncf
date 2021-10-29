@@ -547,13 +547,8 @@ class AdminController extends Controller
     }
 
     public function getUsers() {
-        $data = User::where('type','visitor')->orderBy('id', 'desc')->get();
+        $data = User::orderBy('id', 'desc')->get();
         return view('admin/users', compact('data'));
-    }
-
-    public function getMembers() {
-        $data = User::where('type','member')->orderBy('id', 'desc')->get();
-        return view('admin/members', compact('data'));
     }
 
     public function getProducts() {

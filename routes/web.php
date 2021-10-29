@@ -40,7 +40,6 @@ Route::group(['middleware' => ['admin'], 'namespace' => 'App\Http\Controllers', 
     Route::get('messaging-settings', 'AdminController@getSettings');
     Route::post('update-message-settings', 'AdminController@updateSettings');
     Route::get('users', 'AdminController@getUsers');
-    Route::get('members', 'AdminController@getMembers');
     Route::get('products', 'AdminController@getProducts');
     Route::post('create-product', 'AdminController@createProduct');
     Route::post('update-product', 'AdminController@updateProduct');

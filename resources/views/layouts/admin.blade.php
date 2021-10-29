@@ -149,8 +149,7 @@
                         <a href=""><i class="fa fa-users"></i><span>Users</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="nav nav-sub">
                             <li class="nav-sub-header"><a href=""><span>Users</span></a></li>
-                            <li><a href="{{url('/admin/members')}}"><span>Members</span></a></li>
-                            <li><a href="{{url('/admin/users')}}"><span>Visitors</span></a></li>
+                            <li><a href="{{url('/admin/users')}}"><span>Users</span></a></li>
                             <li><a href="{{url('/admin/admin-users')}}"><span>Admin Users</span></a></li>
                         </ul>
                     </li>
@@ -158,7 +157,7 @@
                         <a href=""><i class="fa fa-users"></i><span>Leadership Team</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="nav nav-sub">
                             <li class="nav-sub-header"><a href=""><span>Leadership Team</span></a></li>
-                            <li><a href="{{url('/admin/teams')}}"><span>Current Leadership</span></a></li>
+                            <li><a href="{{url('/admin/teams')}}"><span>View Team</span></a></li>
                         </ul>
                     </li>
                     <li>
