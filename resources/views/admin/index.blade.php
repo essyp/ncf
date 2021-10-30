@@ -31,7 +31,7 @@
 
                         <!--states start-->
                         <div class="row">
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="panel short-states bg-danger">
                                     <div class="pull-right state-icon">
                                         <i class="fa fa-shopping-cart"></i>
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="panel short-states bg-info">
                                     <div class="pull-right state-icon">
                                         <i class="fa fa-users"></i>
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="panel short-states bg-success">
                                     <div class="pull-right state-icon">
                                         <i class="fa fa-laptop"></i>
@@ -67,31 +67,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="panel short-states bg-primary">
-                                    <div class="pull-right state-icon">
-                                        <i class="fa fa-pie-chart"></i>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h1 class="light-txt">{{$totalMember}}</h1>
-                                        <div class=" pull-right">{{$totalMember}} <i class="fa fa-level-up"></i></div>
-                                        <strong class="text-uppercase">Total Members </strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="panel short-states bg-primary">
-                                    <div class="pull-right state-icon">
-                                        <i class="fa fa-pie-chart"></i>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h1 class="light-txt">{{$totalVisitor}}</h1>
-                                        <div class=" pull-right">{{$totalVisitor}} <i class="fa fa-level-up"></i></div>
-                                        <strong class="text-uppercase">Total Visitors </strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
+                           <div class="col-md-4 col-sm-6">
                                 <div class="panel short-states bg-warning">
                                     <div class="pull-right state-icon">
                                         <i class="fa fa-pie-chart"></i>
@@ -103,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="panel short-states bg-danger">
                                     <div class="pull-right state-icon">
                                         <i class="fa fa-pie-chart"></i>
@@ -115,7 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="panel short-states bg-info">
                                     <div class="pull-right state-icon">
                                         <i class="fa fa-pie-chart"></i>

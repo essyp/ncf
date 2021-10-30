@@ -65,13 +65,11 @@ class AdminController extends Controller
 		$totalBlog = Blog::count();
         $totalProduct = Product::count();
         $totalUser = User::count();
-        $totalMember = User::where('type', 'member')->count();
-        $totalVisitor = User::where('type', 'visitor')->count();
         $totalEvent = Event::count();
         $orders = Order::orderBy('id','desc')->limit(7)->get();
         $users = User::orderby('id', 'desc')->limit(5)->get();
 
-        return view('admin/index', compact('totalOrder','totalAmount','totalBlog','totalProduct','totalUser','totalEvent','orders','users','totalMember','totalVisitor','totalOrderPayment','totalDonationPayment'));
+        return view('admin/index', compact('totalOrder','totalAmount','totalBlog','totalProduct','totalUser','totalEvent','orders','users','totalOrderPayment','totalDonationPayment'));
     }
     
     public function allAdminUsers() {
