@@ -63,7 +63,7 @@ class UserController extends Controller
             'email' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'tel' => 'required|string',
+            // 'tel' => 'required|string',
         ]);
         if ($validator->fails()) {
             $response = array("status" => 422, "message" => $validator->messages()->first());
@@ -81,8 +81,8 @@ class UserController extends Controller
         if($item){
             $item->fname = $request->first_name;
             $item->lname = $request->last_name;
-            $item->tel = $request->tel;
-            $item->email = $request->email;
+            // $item->tel = $request->tel;
+            // $item->email = $request->email;
             $item->address = $request->address;
             if(!is_null($image) && $image != ''){
                 $item->avatar = $imageName;
