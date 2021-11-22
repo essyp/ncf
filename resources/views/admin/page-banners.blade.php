@@ -1,6 +1,6 @@
 @extends( 'layouts.admin' )
 
-@section('title','Company Setup')
+@section('title','Ministry Setup')
 
 @section('style')
 <!--summer note-->
@@ -13,7 +13,7 @@
 <!--page header start-->
 <div class="page-head-wrap">
                     <h4 class="margin0">
-                    Company Setup Information
+                    Ministry Setup Information
                     </h4>
                     <div class="breadcrumb-right">
                         <ol class="breadcrumb">

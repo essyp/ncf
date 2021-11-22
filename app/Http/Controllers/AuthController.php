@@ -112,7 +112,8 @@ class AuthController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'tel' => 'required|string|unique:users',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'confirm_password' => 'same:password'
         ]);
         if ($validator->fails()) {
             $response = array("status" => 422, "message" => $validator->messages()->first());
@@ -137,7 +138,7 @@ class AuthController extends Controller
             }
 
             $activation_link = $this->genActivationLink();
-            $link = url('/')."/user-activation/".$activation_link;
+            $link = "https://ncflekki.optisoft.ng/activate-account?code=".$activation_link;
 
             $user = new User();
             $user->ref_id = $ref_id;
@@ -252,7 +253,7 @@ class AuthController extends Controller
     public function forgotPassword(Request $request){
         $email = $request->email;
         $id = $this->genPasswordResetLink();
-        $link = url('/')."/reset-password/".$id;
+        $link = "https://ncflekki.optisoft.ng/reset-password?code=".$id;
         $count = User::where('email', '=',$email)->count();
             if($count == 1) {
                 $item = User::where('email',$email)->first();
@@ -368,5 +369,5 @@ class AuthController extends Controller
         session()->flush();
         $response = array("status" => 200, "message" => "Logout Successful");
         return Response::json($response);
-    }
+    }    
 }

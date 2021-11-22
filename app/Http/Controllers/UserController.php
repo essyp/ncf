@@ -154,4 +154,16 @@ class UserController extends Controller
             return Response::json($response);
         }
     }
+
+    public function deleteUser($user){
+        $check = User::where('id', $user)->orWhere('email', $user)->first();
+        if($check){
+            User::where('id', $user)->orWhere('email', $user)->delete();
+            $response = array("status" => 200, "message" => "operation Successful");
+            return Response::json($response);
+        } else {
+            $response = array("status" => 403, "message" => "user not found");
+            return Response::json($response);
+        }
+    }
 }

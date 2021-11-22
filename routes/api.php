@@ -37,6 +37,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'user/'], function () {
     Route::get('fetch-user/{id}', [UserController::class, "fetchUser"]);
     Route::post('update/{id}', [UserController::class, "updateUser"]);
     Route::post('change-password/{id}', [UserController::class, "changePassword"]);
+    Route::get('delete-user/{user}', [UserController::class, "deleteUser"]);
 });
 
 Route::group(['middleware' => 'api', 'prefix' => 'home/'], function () {
