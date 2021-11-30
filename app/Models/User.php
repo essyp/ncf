@@ -42,5 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function country(){
+        return $this->belongsTo('App\Models\Country', 'country_id');
+    }
+
+    public function state(){
+        return $this->belongsTo('App\Models\State', 'state_id');
+    }
+
+    public function city(){
+        return $this->belongsTo('App\Models\City', 'city_id');
+    }
+
     
 }

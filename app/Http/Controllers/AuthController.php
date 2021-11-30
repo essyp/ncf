@@ -146,16 +146,22 @@ class AuthController extends Controller
             $user->lname = $request->last_name;
             $user->tel = $request->tel;
             $user->email = $request->email;
+            $user->country_id = $request->country_id;
+            $user->state_id = $request->state_id;
+            $user->city_id = $request->city_id;
+            $user->company_name = $request->company_name;
+            $user->address = $request->address;
             $user->status = INACTIVE;
             $user->activation_link = $activation_link;
             $user->password = bcrypt($request->password);
 
             if($user->save()){
                 $this->ActivationMail("Account Activation", $request->email, $request->first_name.' '.$request->last_name, $link);
+                $data = User::where('id', $user->id)->with('country', 'state', 'city')->first();
             $response = array(
                 "status" => 200,
                 "message" => "Successful Registration. Please check your email to activate your account",
-                "data" => $user,
+                "data" => $data,
             );
 
             return Response::json($response); //return status response as json

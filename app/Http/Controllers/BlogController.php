@@ -119,4 +119,23 @@ class BlogController extends Controller
             return Response::json($response);
         }
     }
+
+    public function fetchBlogCategory() {
+        $data = BlogCategory::where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
 }

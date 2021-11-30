@@ -1,6 +1,6 @@
 @extends( 'layouts.admin' )
 
-@section('title','Ministry Setup')
+@section('title','Page Banners')
 
 @section('style')
 <!--summer note-->
@@ -13,7 +13,7 @@
 <!--page header start-->
 <div class="page-head-wrap">
                     <h4 class="margin0">
-                    Ministry Setup Information
+                    Page Banners
                     </h4>
                     <div class="breadcrumb-right">
                         <ol class="breadcrumb">
@@ -31,7 +31,7 @@
                             <div class="col-md-12">
                                 <div class="panel">
                                     <header class="panel-heading">
-                                    Company Informations
+                                    Page Banners
                                         <span class="tools pull-right">
                                             <a class="refresh-box fa fa-repeat" href="javascript:;"></a>
                                             <a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>
@@ -43,196 +43,196 @@
                                             <form class="cmxform form-horizontal " id="edit-form">
                                             {{ csrf_field() }}
                                                 <div class="form-group ">
-                                                    <label for="com_fullname" class="control-label col-lg-3">Ministry Full Name</label>
-                                                    <div class="col-lg-6">
-                                                        <input class=" form-control" name="fullname" value="{{$com->fullname}}" type="text" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_shortname" class="control-label col-lg-3">Ministry Short Name</label>
-                                                    <div class="col-lg-6">
-                                                        <input class=" form-control" name="shortname" value="{{$com->shortname}}" type="text" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_email" class="control-label col-lg-3">Email Address</label>
-                                                    <div class="col-lg-6">
-                                                        <input class=" form-control" name="email" value="{{$com->email}}" type="email" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_email2" class="control-label col-lg-3">Email Address2</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="email2" value="{{$com->email2}}" type="email" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_tel" class="control-label col-lg-3">Tel</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="tel" value="{{$com->tel}}" type="tel" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_tel2" class="control-label col-lg-3">Tel2</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="tel2" value="{{$com->tel2}}" type="tel" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_tel3" class="control-label col-lg-3">Tel3</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="tel3" value="{{$com->tel3}}" type="tel" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_address" class="control-label col-lg-3">Ministry Main Address</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="address" value="{{$com->address}}" type="text" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_address2" class="control-label col-lg-3">Ministry Address2</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="address2" value="{{$com->address2}}" type="text" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_shortdescrpt" class="control-label col-lg-3">Ministry Short Description</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" name="shortdescrpt">{{$com->shortdescrpt}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_fulldescrpt" class="control-label col-lg-3">Ministry Full Description</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" name="fulldescrpt">{{$com->fulldescrpt}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_vision" class="control-label col-lg-3">Ministry Vision</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control" rows="5" name="vision">{{$com->vision}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_mission" class="control-label col-lg-3">Ministry Mission</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control" rows="5" name="mission">{{$com->mission}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_value" class="control-label col-lg-3">Ministry Core Values</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control" rows="5" name="value">{{$com->value}}</textarea>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="form-group ">
-                                                    <label for="to_join" class="control-label col-lg-3">What it takes to join and become a member of the prayer group</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" name="to_join">{{$com->to_join}}</textarea>
-                                                    </div>
-                                                </div>
-                                                {{-- <div class="form-group ">
-                                                    <label for="benefits" class="control-label col-lg-3">Benefits for  joining the prayer group</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" name="benefits">{{$com->benefits}}</textarea>
-                                                    </div>
-                                                </div> --}}
-                                                <div class="form-group ">
-                                                    <label for="history" class="control-label col-lg-3">Our History</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" name="history">{{$com->history}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_fulldescrpt" class="control-label col-lg-3">Privacy Policy</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" id="privacy" name="privacy">{{$com->privacy}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="com_fulldescrpt" class="control-label col-lg-3">Terms & Conditions of Use</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control summernote" rows="5" id="terms" name="terms">{{$com->terms}}</textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="currency" class="control-label col-lg-3">Currency</label>
-                                                    <div class="col-lg-6">
-                                                        <select class=" form-control" id="currency" name="currency">
-                                                        <option value="{{$com->currency}}">{{$com->currency}}</option>
-                                                        <option value="&#8358;">Naira - ₦</option>
-                                                        <option value="$">Dollar - $</option>
-                                                        <option value="£">Pounds - £</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="form-group ">
-                                                    <label for="com_tel3" class="control-label col-lg-3">Youtube Video ID</label>
-                                                    <div class="col-lg-6">
-                                                        <input class="form-control " name="youtube_video" value="{{$com->youtube_video}}" type="text" />
-                                                    </div>
-                                                </div> -->
-                                                <div class="form-group ">
-                                                    <label for="com_logo" class="control-label col-lg-3">Favicon</label>
+                                                    <label class="control-label col-lg-3">NCF in Brief</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control " id="favicon" name="favicon" type="file" />
+                                                        <input class="form-control" id="ncf_in_brief" name="ncf_in_brief" type="file" accept="image/*" />
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <img id="blah2" src="{{asset('images/logo/'.$com->favicon)}}" style="max-width: 20px; max-height: 20px"/>
+                                                        <img id="blah_ncf_in_brief" src="{{asset('images/banners/'.$banner->ncf_in_brief)}}" style="max-width: 50px; max-height: 50px"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_logo" class="control-label col-lg-3">Company Logo</label>
+                                                    <label class="control-label col-lg-3">Vission & Mission Page</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control " id="logo" name="image" type="file" />
+                                                        <input class="form-control" id="vision_mission" name="vision_mission" type="file" accept="image/*" />
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <img id="blah1" src="{{asset('images/logo/'.$com->logo)}}" style="max-width: 50px; max-height: 50px"/>
+                                                        <img id="blah_vision_mission" src="{{asset('images/banners/'.$banner->vision_mission)}}" style="max-width: 50px; max-height: 50px"/>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group ">
-                                                    <label for="com_logo" class="control-label col-lg-3">About Image</label>
+                                                    <label class="control-label col-lg-3">Milestone</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control " id="about" name="about" type="file" />
+                                                        <input class="form-control" id="milestone" name="milestone" type="file" accept="image/*" />
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <img id="blah3" src="{{asset('images/logo/'.$com->about)}}" style="max-width: 50px; max-height: 50px"/>
+                                                        <img id="blah_milestone" src="{{asset('images/banners/'.$banner->milestone)}}" style="max-width: 50px; max-height: 50px"/>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group ">
-                                                    <label for="background" class="control-label col-lg-3">Background Image</label>
+                                                    <label class="control-label col-lg-3">Governing Bodies</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control " id="background" name="background" type="file" />
+                                                        <input class="form-control" id="governing_bodies" name="governing_bodies" type="file" accept="image/*" />
                                                     </div>
                                                     <div class="col-sm-2">
-                                                        <img id="blah4" src="{{asset('images/logo/'.$com->background_image)}}" style="max-width: 50px; max-height: 50px"/>
-                                                    </div>
-                                                </div><br>
-
-                                                <h3>For Search Engines</h3>
-                                                <div class="form-group ">
-                                                    <label for="com_keywords" class="control-label col-lg-3">Meta Keywords</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control" rows="5" name="keywords">{{$com->keywords}}</textarea>
+                                                        <img id="blah_governing_bodies" src="{{asset('images/banners/'.$banner->governing_bodies)}}" style="max-width: 50px; max-height: 50px"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_descrpt" class="control-label col-lg-3">Meta Short Description</label>
-                                                    <div class="col-lg-6">
-                                                        <textarea class="form-control" rows="5" name="meta_descrpt">{{$com->meta_descrpt}}</textarea>
+                                                    <label class="control-label col-lg-3">Contact us</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="contact_us" name="contact_us" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_contact_us" src="{{asset('images/banners/'.$banner->contact_us)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Habitat - Foreign Green</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="habitat_foreign_green" name="habitat_foreign_green" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_habitat_foreign_green" src="{{asset('images/banners/'.$banner->habitat_foreign_green)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Habitat - Marine Coastline</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="habitat_marine_coastline" name="habitat_marine_coastline" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_habitat_marine_coastline" src="{{asset('images/banners/'.$banner->habitat_marine_coastline)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Species</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="species" name="species" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_species" src="{{asset('images/banners/'.$banner->species)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Climate Change</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="climate_change" name="climate_change" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_climate_change" src="{{asset('images/banners/'.$banner->climate_change)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Environmental Education</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="environmental_education" name="environmental_education" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_environmental_education" src="{{asset('images/banners/'.$banner->environmental_education)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Policy Advocacy</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="policy_advocacy" name="policy_advocacy" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_policy_advocacy" src="{{asset('images/banners/'.$banner->policy_advocacy)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Our Community</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="our_community" name="our_community" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_our_community" src="{{asset('images/banners/'.$banner->our_community)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">E_Library</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="e_library" name="e_library" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_e_library" src="{{asset('images/banners/'.$banner->e_library)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">News Update page</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="news_update" name="news_update" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_news_update" src="{{asset('images/banners/'.$banner->news_update)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Other Resources Page</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="other_resources" name="other_resources" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_other_resources" src="{{asset('images/banners/'.$banner->other_resources)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Membership</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="membership" name="membership" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_membership" src="{{asset('images/banners/'.$banner->membership)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Bird Club Page</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="bird_club" name="bird_club" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_bird_club" src="{{asset('images/banners/'.$banner->bird_club)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Event Page</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="events" name="events" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_events" src="{{asset('images/banners/'.$banner->events)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Volunteer Page</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="volunteer" name="volunteer" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_volunteer" src="{{asset('images/banners/'.$banner->volunteer)}}" style="max-width: 50px; max-height: 50px"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label class="control-label col-lg-3">Support Nature Page</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="support_nature" name="support_nature" type="file" accept="image/*" />
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img id="blah_support_nature" src="{{asset('images/banners/'.$banner->support_nature)}}" style="max-width: 50px; max-height: 50px"/>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="col-lg-offset-3 col-lg-6">
-                                                    <input class="form-control " id="id" name="id" value="{{$com->id}}" type="hidden" />
+                                                    <input class="form-control " id="id" name="id" value="{{$banner->id}}" type="hidden" />
                                                         <button class="btn btn-primary" type="submit">Update Details</button>
                                                     </div>
                                                 </div>
+                                                
                                             </form>
                                         </div>
 
@@ -248,98 +248,310 @@
 @endsection
 
 @section('script')
-<!--summer note-->
-<script src="{{asset('admins/bower_components/summernote/dist/summernote.js')}}"></script>
-<script>
-    $(document).ready(function() {
-        $('.summernote').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true,
-            fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18'],
-            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
-            fontNamesIgnoreCheck: ['Roboto'],
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'hr']],
-                ['view', ['fullscreen', 'codeview']],
-                ['help', ['help']]
-            ]
-        });
-    });
-
-function readURL1(input) {
+<script>   
+function readURLncf_in_brief(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-        $('#blah1').attr('src', e.target.result);
+        $('#blah_ncf_in_brief').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
     }
 }
 
-$("#logo").change(function() {
-   readURL1(this);
+$("#ncf_in_brief").change(function() {
+   readURLncf_in_brief(this);
 });
 
-function readURL2(input) {
+function readURLvision_mission(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-        $('#blah2').attr('src', e.target.result);
+        $('#blah_vision_mission').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
     }
 }
 
-$("#favicon").change(function() {
-   readURL2(this);
+$("#vision_mission").change(function() {
+   readURLvision_mission(this);
 });
 
-function readURL3(input) {
+function readURLmilestone(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-        $('#blah3').attr('src', e.target.result);
+        $('#blah_milestone').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
     }
 }
 
-$("#about").change(function() {
-    readURL3(this);
+$("#milestone").change(function() {
+    readURLmilestone(this);
 });
 
-function readURL4(input) {
+function readURLgoverning_bodies(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-        $('#blah4').attr('src', e.target.result);
+        $('#blah_governing_bodies').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
     }
 }
-
-$("#background").change(function() {
-    readURL4(this);
+$("#governing_bodies").change(function() {
+    readURLgoverning_bodies(this);
 });
+
+function readURLcontact_us(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_contact_us').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#contact_us").change(function() {
+    readURLcontact_us(this);
+});
+
+function readURLhabitat_foreign_green(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_habitat_foreign_green').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#habitat_foreign_green").change(function() {
+    readURLhabitat_foreign_green(this);
+});
+
+function readURLhabitat_marine_coastline(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_habitat_marine_coastline').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#habitat_marine_coastline").change(function() {
+    readURLhabitat_marine_coastline(this);
+});
+
+function readURLspecies(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_species').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#species").change(function() {
+    readURLspecies(this);
+});
+
+function readURLclimate_change(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_climate_change').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#climate_change").change(function() {
+    readURLclimate_change(this);
+});
+
+function readURLenvironmental_education(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_environmental_education').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#environmental_education").change(function() {
+    readURLenvironmental_education(this);
+});
+
+function readURLpolicy_advocacy(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_policy_advocacy').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#policy_advocacy").change(function() {
+    readURLpolicy_advocacy(this);
+});
+
+function readURLour_community(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_our_community').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#our_community").change(function() {
+    readURLour_community(this);
+});
+
+function readURLe_library(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_e_library').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#e_library").change(function() {
+    readURLe_library(this);
+});
+
+function readURLnews_update(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_news_update').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#news_update").change(function() {
+    readURLnews_update(this);
+});
+
+function readURLother_resources(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_other_resources').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#other_resources").change(function() {
+    readURLother_resources(this);
+});
+
+function readURLmembership(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_membership').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#membership").change(function() {
+    readURLmembership(this);
+});
+
+function readURLbird_club(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_bird_club').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#bird_club").change(function() {
+    readURLbird_club(this);
+});
+
+function readURLevents(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_events').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#events").change(function() {
+    readURLevents(this);
+});
+
+function readURLvolunteer(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_volunteer').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#volunteer").change(function() {
+    readURLvolunteer(this);
+});
+
+function readURLsupport_nature(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#blah_support_nature').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#support_nature").change(function() {
+    readURLsupport_nature(this);
+});
+
 
 
 $('#edit-form').submit(function(e){
@@ -350,7 +562,7 @@ $('#edit-form').submit(function(e){
 		var form = $("#edit-form")[0];
 		var _data = new FormData(form);
 		$.ajax({
-			url: '{{url("admin/update-company")}}',
+			url: '{{url("admin/update-page-banner")}}',
 			data: _data,
 			enctype: 'multipart/form-data',
 			processData: false,

@@ -17,5 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateMinistryDetailsSeeder::class);
         $this->call(CreateAdminSeeder::class);
         $this->call(CreatePaymentGatewaySeeder::class);
+        $this->call(createPageBanner::class);
+        $this->call(CountriesTableSeeder::class);
+        $this->call(StatesTableSeeder::class);
+        $this->call(CitiesTableSeeder::class);
     }
 }

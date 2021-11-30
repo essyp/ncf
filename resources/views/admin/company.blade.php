@@ -43,13 +43,13 @@
                                             <form class="cmxform form-horizontal " id="edit-form">
                                             {{ csrf_field() }}
                                                 <div class="form-group ">
-                                                    <label for="com_fullname" class="control-label col-lg-3">Ministry Full Name</label>
+                                                    <label for="com_fullname" class="control-label col-lg-3">Company Full Name</label>
                                                     <div class="col-lg-6">
                                                         <input class=" form-control" name="fullname" value="{{$com->fullname}}" type="text" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_shortname" class="control-label col-lg-3">Ministry Short Name</label>
+                                                    <label for="com_shortname" class="control-label col-lg-3">Company Short Name</label>
                                                     <div class="col-lg-6">
                                                         <input class=" form-control" name="shortname" value="{{$com->shortname}}" type="text" />
                                                     </div>
@@ -85,60 +85,60 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_address" class="control-label col-lg-3">Ministry Main Address</label>
+                                                    <label for="com_address" class="control-label col-lg-3">Company Main Address</label>
                                                     <div class="col-lg-6">
                                                         <input class="form-control " name="address" value="{{$com->address}}" type="text" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_address2" class="control-label col-lg-3">Ministry Address2</label>
+                                                    <label for="com_address2" class="control-label col-lg-3">Company Address2</label>
                                                     <div class="col-lg-6">
                                                         <input class="form-control " name="address2" value="{{$com->address2}}" type="text" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_shortdescrpt" class="control-label col-lg-3">Ministry Short Description</label>
+                                                    <label for="com_shortdescrpt" class="control-label col-lg-3">Company Short Description</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control summernote" rows="5" name="shortdescrpt">{{$com->shortdescrpt}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_fulldescrpt" class="control-label col-lg-3">Ministry Full Description</label>
+                                                    <label for="com_fulldescrpt" class="control-label col-lg-3">Company Full Description</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control summernote" rows="5" name="fulldescrpt">{{$com->fulldescrpt}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_vision" class="control-label col-lg-3">Ministry Vision</label>
+                                                    <label for="com_vision" class="control-label col-lg-3">Company Vision</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control" rows="5" name="vision">{{$com->vision}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_mission" class="control-label col-lg-3">Ministry Mission</label>
+                                                    <label for="com_mission" class="control-label col-lg-3">Company Mission</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control" rows="5" name="mission">{{$com->mission}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="com_value" class="control-label col-lg-3">Ministry Core Values</label>
+                                                    <label for="com_value" class="control-label col-lg-3">Company Core Values</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control" rows="5" name="value">{{$com->value}}</textarea>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="form-group ">
-                                                    <label for="to_join" class="control-label col-lg-3">What it takes to join and become a member of the prayer group</label>
+                                                    <label for="to_join" class="control-label col-lg-3">What it takes to join and become a member</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control summernote" rows="5" name="to_join">{{$com->to_join}}</textarea>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="form-group ">
-                                                    <label for="benefits" class="control-label col-lg-3">Benefits for  joining the prayer group</label>
+                                                <div class="form-group ">
+                                                    <label for="benefits" class="control-label col-lg-3">Benefits for joining us</label>
                                                     <div class="col-lg-6">
                                                         <textarea class="form-control summernote" rows="5" name="benefits">{{$com->benefits}}</textarea>
                                                     </div>
-                                                </div> --}}
+                                                </div> 
                                                 <div class="form-group ">
                                                     <label for="history" class="control-label col-lg-3">Our History</label>
                                                     <div class="col-lg-6">

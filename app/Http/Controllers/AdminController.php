@@ -38,6 +38,7 @@ use App\Models\Team;
 use App\Models\Gallery;
 use App\Models\Benefit;
 use App\Models\Message;
+use App\Models\PageBanner;
 
 class AdminController extends Controller
 {
@@ -1380,6 +1381,217 @@ class AdminController extends Controller
                 "status" => "unsuccessful",
                 "message" => "Error submitting. Please try again",
             );
+            return Response::json($response);
+        }
+    }
+
+    public function getPageBanners() {
+        $banner = PageBanner::first();
+        return view('admin/page-banners', compact('banner'));
+    }
+
+    public function updatePageBanner(Request $request) {
+        $ncf_in_brief = $request->file('ncf_in_brief');
+        if(!is_null($ncf_in_brief) && $ncf_in_brief != ''){
+            $ncf_in_briefName  = time() . '.' . $ncf_in_brief->getClientOriginalExtension();
+            $path = "images/banners";
+            $ncf_in_brief->move($path, $ncf_in_briefName);
+        }
+
+        $vision_mission = $request->file('vision_mission');
+        if(!is_null($vision_mission) && $vision_mission != ''){
+            $vision_missionName  = time() . '.' . $vision_mission->getClientOriginalExtension();
+            $path = "images/banners";
+            $vision_mission->move($path, $vision_missionName);
+        }
+
+        $milestone = $request->file('milestone');
+        if(!is_null($milestone) && $milestone != ''){
+            $milestoneName  = time() . '.' . $milestone->getClientOriginalExtension();
+            $path = "images/banners";
+            $milestone->move($path, $milestoneName);
+        }
+        $governing_bodies = $request->file('governing_bodies');
+        if(!is_null($governing_bodies) && $governing_bodies != ''){
+            $governing_bodiesName  = time() . '.' . $governing_bodies->getClientOriginalExtension();
+            $path = "images/banners";
+            $governing_bodies->move($path, $governing_bodiesName);
+        }
+
+        $contact_us = $request->file('contact_us');
+        if(!is_null($contact_us) && $contact_us != ''){
+            $contact_usName  = time() . '.' . $contact_us->getClientOriginalExtension();
+            $path = "images/banners";
+            $contact_us->move($path, $contact_usName);
+        }
+        $habitat_foreign_green = $request->file('habitat_foreign_green');
+        if(!is_null($habitat_foreign_green) && $habitat_foreign_green != ''){
+            $habitat_foreign_greenName  = time() . '.' . $habitat_foreign_green->getClientOriginalExtension();
+            $path = "images/banners";
+            $habitat_foreign_green->move($path, $habitat_foreign_greenName);
+        }
+
+        $habitat_marine_coastline = $request->file('habitat_marine_coastline');
+        if(!is_null($habitat_marine_coastline) && $habitat_marine_coastline != ''){
+            $habitat_marine_coastlineName  = time() . '.' . $habitat_marine_coastline->getClientOriginalExtension();
+            $path = "images/banners";
+            $habitat_marine_coastline->move($path, $habitat_marine_coastlineName);
+        }
+        $species = $request->file('species');
+        if(!is_null($species) && $species != ''){
+            $speciesName  = time() . '.' . $species->getClientOriginalExtension();
+            $path = "images/banners";
+            $species->move($path, $speciesName);
+        }
+
+        $climate_change = $request->file('climate_change');
+        if(!is_null($climate_change) && $climate_change != ''){
+            $climate_changeName  = time() . '.' . $climate_change->getClientOriginalExtension();
+            $path = "images/banners";
+            $climate_change->move($path, $climate_changeName);
+        }
+        $environmental_education = $request->file('environmental_education');
+        if(!is_null($environmental_education) && $environmental_education != ''){
+            $environmental_educationName  = time() . '.' . $environmental_education->getClientOriginalExtension();
+            $path = "images/banners";
+            $environmental_education->move($path, $environmental_educationName);
+        }
+
+        $policy_advocacy = $request->file('policy_advocacy');
+        if(!is_null($policy_advocacy) && $policy_advocacy != ''){
+            $policy_advocacyName  = time() . '.' . $policy_advocacy->getClientOriginalExtension();
+            $path = "images/banners";
+            $policy_advocacy->move($path, $policy_advocacyName);
+        }
+        $our_community = $request->file('our_community');
+        if(!is_null($our_community) && $our_community != ''){
+            $our_communityName  = time() . '.' . $our_community->getClientOriginalExtension();
+            $path = "images/banners";
+            $our_community->move($path, $our_communityName);
+        }
+
+        $e_library = $request->file('e_library');
+        if(!is_null($e_library) && $e_library != ''){
+            $e_libraryName  = time() . '.' . $e_library->getClientOriginalExtension();
+            $path = "images/banners";
+            $e_library->move($path, $e_libraryName);
+        }
+        $news_update = $request->file('news_update');
+        if(!is_null($news_update) && $news_update != ''){
+            $news_updateName  = time() . '.' . $news_update->getClientOriginalExtension();
+            $path = "images/banners";
+            $news_update->move($path, $news_updateName);
+        }
+
+        $other_resources = $request->file('other_resources');
+        if(!is_null($other_resources) && $other_resources != ''){
+            $other_resourcesName  = time() . '.' . $other_resources->getClientOriginalExtension();
+            $path = "images/banners";
+            $other_resources->move($path, $other_resourcesName);
+        }
+        $membership = $request->file('membership');
+        if(!is_null($membership) && $membership != ''){
+            $membershipName  = time() . '.' . $membership->getClientOriginalExtension();
+            $path = "images/banners";
+            $membership->move($path, $membershipName);
+        }
+
+        $bird_club = $request->file('bird_club');
+        if(!is_null($bird_club) && $bird_club != ''){
+            $bird_clubName  = time() . '.' . $bird_club->getClientOriginalExtension();
+            $path = "images/banners";
+            $bird_club->move($path, $bird_clubName);
+        }
+
+        $events = $request->file('events');
+        if(!is_null($events) && $events != ''){
+            $eventsName  = 'events'.'_'.time() . '.' . $events->getClientOriginalExtension();
+            $path = "images/banners";
+            $events->move($path, $eventsName);
+        }
+
+        $volunteer = $request->file('volunteer');
+        if(!is_null($volunteer) && $volunteer != ''){
+            $volunteerName  = 'volunteer'.'_'.time() . '.' . $volunteer->getClientOriginalExtension();
+            $path = "images/banners";
+            $volunteer->move($path, $volunteerName);
+        }
+
+        $support_nature = $request->file('support_nature');
+        if(!is_null($support_nature) && $support_nature != ''){
+            $support_natureName  = 'support_nature'.'_'.time() . '.' . $support_nature->getClientOriginalExtension();
+            $path = "images/banners";
+            $support_nature->move($path, $support_natureName);
+        }
+
+        $banner = PageBanner::where('id', $request->id)->first();
+        if(!is_null($ncf_in_brief) && $ncf_in_brief != ''){
+            $banner->ncf_in_brief = $ncf_in_briefName;
+        }
+        if(!is_null($vision_mission) && $vision_mission != ''){
+            $banner->vision_mission = $vision_missionName;
+        }
+        if(!is_null($milestone) && $milestone != ''){
+            $banner->milestone = $milestoneName;
+        }
+        if(!is_null($governing_bodies) && $governing_bodies != ''){
+            $banner->governing_bodies = $governing_bodiesName;
+        }
+        if(!is_null($contact_us) && $contact_us != ''){
+            $banner->contact_us = $contact_usName;
+        }
+        if(!is_null($habitat_foreign_green) && $habitat_foreign_green != ''){
+            $banner->habitat_foreign_green = $habitat_foreign_greenName;
+        }
+        if(!is_null($habitat_marine_coastline) && $habitat_marine_coastline != ''){
+            $banner->habitat_marine_coastline = $habitat_marine_coastlineName;
+        }
+        if(!is_null($species) && $species != ''){
+            $banner->species = $speciesName;
+        }
+        if(!is_null($climate_change) && $climate_change != ''){
+            $banner->climate_change = $climate_changeName;
+        }
+        if(!is_null($environmental_education) && $environmental_education != ''){
+            $banner->environmental_education = $environmental_educationName;
+        }
+        if(!is_null($policy_advocacy) && $policy_advocacy != ''){
+            $banner->policy_advocacy = $policy_advocacyName;
+        }
+        if(!is_null($our_community) && $our_community != ''){
+            $banner->our_community = $our_communityName;
+        }
+        if(!is_null($e_library) && $e_library != ''){
+            $banner->e_library = $e_libraryName;
+        }
+        if(!is_null($news_update) && $news_update != ''){
+            $banner->news_update = $news_updateName;
+        }
+        if(!is_null($other_resources) && $other_resources != ''){
+            $banner->other_resources = $other_resourcesName;
+        }
+        if(!is_null($membership) && $membership != ''){
+            $banner->membership = $membershipName;
+        }
+        if(!is_null($bird_club) && $bird_club != ''){
+            $banner->bird_club = $bird_clubName;
+        }
+        if(!is_null($events) && $events != ''){
+            $banner->events = $eventsName;
+        }
+        if(!is_null($volunteer) && $volunteer != ''){
+            $banner->volunteer = $volunteerName;
+        }
+        if(!is_null($support_nature) && $support_nature != ''){
+            $banner->support_nature = $support_natureName;
+        }
+        if($banner->save()){
+
+            $response = array(
+                "status" => "success",
+                "message" => "updated successfully",
+            );
+            $this->log("Operation successful.");
             return Response::json($response);
         }
     }

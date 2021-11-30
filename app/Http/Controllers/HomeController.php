@@ -32,7 +32,13 @@ use App\Models\PaymentGateway;
 use App\Models\Newsletter;
 use App\Models\Donation;
 use App\Models\Benefit;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\MembershipCorporate;
+use App\Models\MembershipIndividual;
 use App\Models\Message;
+use App\Models\PageBanner;
+use App\Models\State;
 
 class HomeController extends Controller
 {
@@ -393,6 +399,242 @@ class HomeController extends Controller
                 "message" => "Order unsuccessful. Please try again",
             );
             return Response::json($response); //return status response as json
+        }
+    }
+
+    public function fetchSlides() {
+        $data = Banner::where('status',1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function fetchPageBanners() {
+        $data = PageBanner::first();
+        if($data){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "operation failed",
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function corporateMembership(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|string',
+            'company_name' => 'required|string',
+            'ownership_type' => 'required|string',
+            'country_id' => 'required|integer',
+            'state_id' => 'required|integer',
+            'city_id' => 'required|integer',
+            'office_address' => 'required|string',
+            'company_email' => 'required|email',
+            'company_tel' => 'required|numeric',
+            'contact_name' => 'required|string',
+            'contact_email' => 'required|email',
+            'contact_tel' => 'required|numeric',
+        ]);
+        if ($validator->fails()) {
+            $response = array("status" => 422, "message" => $validator->messages()->first());
+            return Response::json($response);
+        }
+
+        $data = new MembershipCorporate();
+        $data->type = $request->type;
+        $data->company_name = $request->company_name;
+        $data->ownership_type = $request->ownership_type;
+        $data->country_id = $request->country_id;
+        $data->state_id = $request->state_id;
+        $data->city_id = $request->city_id;
+        $data->office_address = $request->office_address;
+        $data->company_email = $request->company_email;
+        $data->company_tel = $request->company_tel;
+        $data->company_strength = $request->company_strength;
+        $data->company_director = $request->company_director;
+        $data->date_started = $request->date_started;
+        $data->contact_name = $request->contact_name;
+        $data->contact_email = $request->contact_email;
+        $data->contact_tel = $request->contact_tel;
+        $data->contact_designation = $request->contact_designation;
+        if($data->save()){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "operation failed",
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function individualMembership(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|string',
+            'name' => 'required|string',
+            'phone_number' => 'required|numeric',
+            'country_id' => 'required|integer',
+            'state_id' => 'required|integer',
+            'city_id' => 'required|integer',
+            'address' => 'required|string',
+            'email' => 'required|email',
+            'occupation' => 'required|string',
+            'institution' => 'required|string',
+            'marital_status' => 'required|string',
+            'sex' => 'required|string',
+        ]);
+        if ($validator->fails()) {
+            $response = array("status" => 422, "message" => $validator->messages()->first());
+            return Response::json($response);
+        }
+
+        $data = new MembershipIndividual();
+        $data->type = $request->type;
+        $data->name = $request->name;
+        $data->other_name = $request->other_name;
+        $data->marital_status = $request->marital_status;
+        $data->sex = $request->sex;
+        $data->country_id = $request->country_id;
+        $data->state_id = $request->state_id;
+        $data->city_id = $request->city_id;
+        $data->address = $request->address;
+        $data->email = $request->email;
+        $data->phone_number = $request->phone_number;
+        $data->occupation = $request->occupation;
+        $data->institution = $request->institution;
+        $data->date_created = $request->date_created;
+        $data->previous_mem_no = $request->previous_mem_no;
+        if($data->save()){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "operation failed",
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function fetchCountries() {
+        $data = Country::where('status',1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function fetchStates($country_id) {
+        $data = State::where('country_id', $country_id)->where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function fetchCities($state_id) {
+        $data = City::where('state_id', $state_id)->where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function getTeam() {
+        $data = Team::where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function getTeamDetail($id) {
+        $data = Team::where('id', $id)->orWhere('slug', $id)->first();
+        if($data){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+            );
+            return Response::json($response);
         }
     }
     

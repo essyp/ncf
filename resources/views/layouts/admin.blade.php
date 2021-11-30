@@ -169,7 +169,8 @@
                             <li><a href="{{url('/admin/payment-gateways')}}"><span>Payment Gateway</span></a></li>
                         </ul>
                     </li>
-                    <li><a href="{{url('/admin/banners')}}"><i class="fa fa-image"></i><span>Home Banners</span></a></li>
+                    <li><a href="{{url('/admin/banners')}}"><i class="fa fa-image"></i><span>Home Slides</span></a></li>
+                    <li><a href="{{url('/admin/page-banners')}}"><i class="fa fa-image"></i><span>Page Banners</span></a></li>
                     
                     <li><a href="{{url('/admin/newsletter-subscriptions')}}"><i class="fa fa-th-large"></i><span>Newsletter Subscriptions</span></a></li>
                     <li><a href="{{url('/admin/enquiries')}}"><i class="fa fa-info"></i><span>Client Enquiries</span></a></li>

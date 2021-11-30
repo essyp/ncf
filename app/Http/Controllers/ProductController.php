@@ -96,7 +96,7 @@ class ProductController extends Controller
     }
 
     public function singleProduct($id) {
-        $data = Product::where('slug',$id)->where('id',$id)->with('cat')->first();
+        $data = Product::where('slug',$id)->orWhere('id',$id)->with('cat')->first();
         if($data){
             $response = array(
                 "status" => 200,
@@ -165,7 +165,7 @@ class ProductController extends Controller
         if($product){
             $product_id = $request->product_id;
             $price = $product->price;
-            $quantity = "1";
+            $quantity = !empty($product->quantity)?$product->quantity:"1";
             $total = $quantity * $price;
             $count = Cart::where('user_id', '=',$user_id)->where('product_id', '=' ,$product_id)->count();
                 if($count == 1) {
@@ -300,6 +300,25 @@ class ProductController extends Controller
             $response = array(
                 "status" => 400,
                 "message" => "operation failed",
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function fetchProductCategory() {
+        $data = ProductCategory::where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
             );
             return Response::json($response);
         }
