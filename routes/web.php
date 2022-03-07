@@ -89,6 +89,8 @@ Route::group(['middleware' => ['admin'], 'namespace' => 'App\Http\Controllers', 
     Route::post('update-message', 'AdminController@updateMessage');
     Route::get('page-banners', 'AdminController@getPageBanners');
     Route::post('update-page-banner', 'AdminController@updatePageBanner');
+    Route::get('membership-corporate', 'AdminController@getCorporateMembership');
+    Route::get('membership-individual', 'AdminController@getIndividualMembership');
 });
 
 Route::group(['middleware' => ['admin'], 'namespace' => 'App\Http\Controllers', 'prefix' => 'admin/'], function () {

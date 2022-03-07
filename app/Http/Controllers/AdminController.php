@@ -37,6 +37,8 @@ use App\Models\Testimony;
 use App\Models\Team;
 use App\Models\Gallery;
 use App\Models\Benefit;
+use App\Models\MembershipCorporate;
+use App\Models\MembershipIndividual;
 use App\Models\Message;
 use App\Models\PageBanner;
 
@@ -1594,5 +1596,15 @@ class AdminController extends Controller
             $this->log("Operation successful.");
             return Response::json($response);
         }
+    }
+
+    public function getCorporateMembership() {
+        $data = MembershipCorporate::orderBy('id','desc')->get();
+        return view('admin/membership-corporate', compact('data'));
+    }
+
+    public function getIndividualMembership() {
+        $data = MembershipIndividual::orderBy('id','desc')->get();
+        return view('admin/membership-individual', compact('data'));
     }
 }

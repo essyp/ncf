@@ -135,7 +135,7 @@ class ProductController extends Controller
     public function sumTotalCart($id) {
         $data = Cart::where('user_id', $id)->sum('total');
         if($data){
-            if(count($data) > 0){
+            if($data > 0){
                 $response = array(
                     "status" => 200,
                     "message" => "operation successful",

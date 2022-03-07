@@ -448,11 +448,15 @@ class HomeController extends Controller
             'state_id' => 'required|integer',
             'city_id' => 'required|integer',
             'office_address' => 'required|string',
-            'company_email' => 'required|email',
-            'company_tel' => 'required|numeric',
+            'company_email' => 'required|email|unique:membership_corporates|max:200',
+            'company_tel' => 'required|numeric|unique:membership_individuals|max:200',
             'contact_name' => 'required|string',
             'contact_email' => 'required|email',
             'contact_tel' => 'required|numeric',
+            'payment_gateway_id' => 'required|integer',
+            'transaction_reference' => 'required|numeric',
+            'payment_status' => 'required|integer',
+            'amount' => 'required|integer',
         ]);
         if ($validator->fails()) {
             $response = array("status" => 422, "message" => $validator->messages()->first());
@@ -476,7 +480,18 @@ class HomeController extends Controller
         $data->contact_email = $request->contact_email;
         $data->contact_tel = $request->contact_tel;
         $data->contact_designation = $request->contact_designation;
+        $data->reference = $request->transaction_reference;
+        $data->payment_status = $request->payment_status;
         if($data->save()){
+            $payment = new Payment();
+            $payment->transaction_id = $request->transaction_reference;
+            $payment->payment_gateway_id = $request->payment_gateway_id;
+            $payment->amount = $request->amount;
+            $payment->status = $request->payment_status;
+            $payment->membership_type = 'corporate';
+            $payment->membership_id = $data->id;
+            $payment->save();
+
             $response = array(
                 "status" => 200,
                 "message" => "operation successful",
@@ -496,16 +511,20 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
             'name' => 'required|string',
-            'phone_number' => 'required|numeric',
+            'phone_number' => 'required|numeric|unique:membership_individuals|max:200',
             'country_id' => 'required|integer',
             'state_id' => 'required|integer',
             'city_id' => 'required|integer',
             'address' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:membership_individuals|max:200',
             'occupation' => 'required|string',
             'institution' => 'required|string',
             'marital_status' => 'required|string',
             'sex' => 'required|string',
+            'payment_gateway_id' => 'required|integer',
+            'transaction_reference' => 'required|numeric',
+            'payment_status' => 'required|integer',
+            'amount' => 'required|integer',
         ]);
         if ($validator->fails()) {
             $response = array("status" => 422, "message" => $validator->messages()->first());
@@ -528,7 +547,18 @@ class HomeController extends Controller
         $data->institution = $request->institution;
         $data->date_created = $request->date_created;
         $data->previous_mem_no = $request->previous_mem_no;
+        $data->reference = $request->transaction_reference;
+        $data->payment_status = $request->payment_status;
         if($data->save()){
+            $payment = new Payment();
+            $payment->transaction_id = $request->transaction_reference;
+            $payment->payment_gateway_id = $request->payment_gateway_id;
+            $payment->amount = $request->amount;
+            $payment->status = $request->payment_status;
+            $payment->membership_type = 'individual';
+            $payment->membership_id = $data->id;
+            $payment->save();
+
             $response = array(
                 "status" => 200,
                 "message" => "operation successful",
@@ -633,6 +663,25 @@ class HomeController extends Controller
             $response = array(
                 "status" => 400,
                 "message" => "empty data",
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function getPaymentGateway() {
+        $data = PaymentGateway::where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
             );
             return Response::json($response);
         }

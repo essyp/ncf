@@ -161,6 +161,14 @@
                         </ul>
                     </li>
                     <li>
+                        <a href=""><i class="fa fa-users"></i><span>Membership</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <ul class="nav nav-sub">
+                            <li class="nav-sub-header"><a href=""><span>Membership</span></a></li>
+                            <li><a href="{{url('/admin/membership-corporate')}}"><span>Corporate</span></a></li>
+                            <li><a href="{{url('/admin/membership-individual')}}"><span>Individual</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href=""><i class="fa fa-money"></i><span>Payments</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="nav nav-sub">
                             <li class="nav-sub-header"><a href=""><span>Payment</span></a></li>
