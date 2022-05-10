@@ -39,6 +39,7 @@ use App\Models\MembershipIndividual;
 use App\Models\Message;
 use App\Models\PageBanner;
 use App\Models\State;
+use App\Models\Report;
 
 class HomeController extends Controller
 {
@@ -449,7 +450,7 @@ class HomeController extends Controller
             'city_id' => 'required|integer',
             'office_address' => 'required|string',
             'company_email' => 'required|email|unique:membership_corporates|max:200',
-            'company_tel' => 'required|numeric|unique:membership_individuals|max:200',
+            'company_tel' => 'required|numeric|unique:membership_corporates',
             'contact_name' => 'required|string',
             'contact_email' => 'required|email',
             'contact_tel' => 'required|numeric',
@@ -511,7 +512,7 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
             'name' => 'required|string',
-            'phone_number' => 'required|numeric|unique:membership_individuals|max:200',
+            'phone_number' => 'required|numeric|unique:membership_individuals',
             'country_id' => 'required|integer',
             'state_id' => 'required|integer',
             'city_id' => 'required|integer',
@@ -670,6 +671,25 @@ class HomeController extends Controller
 
     public function getPaymentGateway() {
         $data = PaymentGateway::where('status', 1)->get();
+        if(count($data) > 0){
+            $response = array(
+                "status" => 200,
+                "message" => "operation successful",
+                "data" => $data,
+            );
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "empty data",
+                "data" => $data,
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function getReports() {
+        $data = Report::where('status', 1)->orderBy('id','desc')->get();
         if(count($data) > 0){
             $response = array(
                 "status" => 200,

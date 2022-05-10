@@ -97,3 +97,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'team/'], function () {
 Route::group(['middleware' => 'api', 'prefix' => 'gateway/'], function () {
     Route::get('payment', [HomeController::class, "getPaymentGateway"]);
 });
+
+Route::group(['middleware' => 'api', 'prefix' => 'report/'], function () {
+    Route::get('all', [HomeController::class, "getReports"]);
+});

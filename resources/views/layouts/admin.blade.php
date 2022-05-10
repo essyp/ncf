@@ -183,6 +183,7 @@
                     <li><a href="{{url('/admin/newsletter-subscriptions')}}"><i class="fa fa-th-large"></i><span>Newsletter Subscriptions</span></a></li>
                     <li><a href="{{url('/admin/enquiries')}}"><i class="fa fa-info"></i><span>Client Enquiries</span></a></li>
                     <li><a href="{{url('/admin/testimonies')}}"><i class="fa fa-group"></i><span>Testimonies</span></a></li>
+                    <li><a href="{{url('/admin/reports')}}"><i class="fa fa-group"></i><span>Reports</span></a></li>
                     
                     <li class="nav-head">
                         <h5 class="nav-title text-uppercase light-txt">Extra</h5>

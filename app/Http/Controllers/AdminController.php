@@ -41,6 +41,7 @@ use App\Models\MembershipCorporate;
 use App\Models\MembershipIndividual;
 use App\Models\Message;
 use App\Models\PageBanner;
+use App\Models\Report;
 
 class AdminController extends Controller
 {
@@ -1606,5 +1607,66 @@ class AdminController extends Controller
     public function getIndividualMembership() {
         $data = MembershipIndividual::orderBy('id','desc')->get();
         return view('admin/membership-individual', compact('data'));
+    }
+
+    public function getReports() {
+        $data = Report::orderBy('id','desc')->get();
+        return view('admin/reports', compact('data'));
+    }
+
+    public function addReport(Request $request) {
+        $file = $request->file('file');
+        if(!is_null($file) && $file != ''){
+            $fileName  = time() . '.' . $file->getClientOriginalExtension();
+            $path = "reports/";
+            $file->move($path, $fileName);
+        }
+
+        $data = new Report();
+        $data->title = $request->title;
+        $data->file = $fileName;
+        if($data->save()){
+            $response = array(
+                "status" => "success",
+                "message" => "Operation successful",
+            );
+            $this->log("Uploaded new report with title - ".$request->title);
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => "unsuccessful",
+                "message" => "operation failed. Please try again",
+            );
+            return Response::json($response);
+        }
+    }
+
+    public function updateReport(Request $request) {
+        $file = $request->file('file');
+        if(!is_null($file) && $file != ''){
+            $fileName  = time() . '.' . $file->getClientOriginalExtension();
+            $path = "reports/";
+            $file->move($path, $fileName);
+        }
+
+        $data = Report::where('id', $request->id)->first();
+        $data->title = $request->title;
+        if(!is_null($file) && $file != ''){
+        $data->file = $fileName;
+        }
+        if($data->save()){
+            $response = array(
+                "status" => "success",
+                "message" => "Operation successful",
+            );
+            $this->log("updated report with title - ".$request->title);
+            return Response::json($response);
+        } else {
+            $response = array(
+                "status" => "unsuccessful",
+                "message" => "operation failed. Please try again",
+            );
+            return Response::json($response);
+        }
     }
 }

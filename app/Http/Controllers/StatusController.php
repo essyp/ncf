@@ -36,6 +36,7 @@ use App\Models\Team;
 use App\Models\Gallery;
 use App\Models\Benefit;
 use App\Models\Message;
+use App\Models\Report;
 
 class StatusController extends Controller
 {
@@ -937,6 +938,51 @@ class StatusController extends Controller
                     "message" => "Operation Successful",
                 );
                 
+            }
+        }
+		return Response::json($response);
+    }
+
+    public function report(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|array',
+            'id.*' => 'required',
+        ]);
+        if ($validator->fails()){
+            $response = array(
+                "status" => "unsuccessful",
+                "message" => $validator->messages()->first(),
+                );
+                return Response::json($response);
+        }
+        $id = $request->id;
+       
+		if($request->submit == "active") {
+            foreach ($id as $idd) {
+                Report::where('id',$idd)->update(array('status' => 1));
+                $response = array(
+                    "status" => "success",
+                    "message" => "Operation Successful",
+                );
+                $this->log("activated report");
+            }   
+        }elseif($request->submit == "inactive"){
+            foreach ($id as $idd) {
+                Report::where('id',$idd)->update(array('status' => 0));
+                $response = array(
+                    "status" => "success",
+                    "message" => "Operation Successful",
+                );
+                $this->log("deactivated report");
+            }
+        } elseif($request->submit == "delete"){
+            foreach ($id as $idd) {
+                Report::where('id',$idd)->delete();
+                $response = array(
+                    "status" => "success",
+                    "message" => "Operation Successful",
+                );
+                $this->log("deleted report");
             }
         }
 		return Response::json($response);
