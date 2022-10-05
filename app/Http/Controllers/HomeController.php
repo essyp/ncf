@@ -493,6 +493,17 @@ class HomeController extends Controller
             $payment->membership_id = $data->id;
             $payment->save();
 
+            $mail = array(
+                'type'=> $data->type,
+                'email'=> $data->company_email,
+                'phone_number'=> $data->company_tel,
+                'ref_id'=> $data->reference,
+                'address'=> $data->office_address,
+                'name'=> $data->company_name            
+            );
+
+            $this->notifyMail($mail);
+
             $response = array(
                 "status" => 200,
                 "message" => "operation successful",
@@ -560,6 +571,17 @@ class HomeController extends Controller
             $payment->membership_id = $data->id;
             $payment->save();
 
+            $mail = array(
+                'type'=> $data->type,
+                'email'=> $data->email,
+                'phone_number'=> $data->phone_number,
+                'ref_id'=> $data->reference,
+                'address'=> $data->address,
+                'name'=> $data->name            
+            );
+
+            $this->notifyMail($mail);
+
             $response = array(
                 "status" => 200,
                 "message" => "operation successful",
@@ -573,6 +595,14 @@ class HomeController extends Controller
             );
             return Response::json($response);
         }
+    }
+
+    public function notifyMail($mail){
+        Mail::send('mails/membership', $mail, function($message) {
+            $com = Company::first();
+            $message->from($com->email, $com->fullname);
+            $message->to('membership@ncfnigeria.org', 'New Membership')->subject('New Membership');
+        });
     }
 
     public function fetchCountries() {

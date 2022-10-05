@@ -55,7 +55,7 @@
                                             <a class="close-box fa fa-times" href="javascript:;"></a>
                                         </span>
                                     </header>
-                                    <div class="panel-body">
+                                    <div class="panel-body" style="overflow-x:auto;">
                                         <table id="datatable" class="table responsive-data-table table-striped">
                                             <thead>
                                             <tr>

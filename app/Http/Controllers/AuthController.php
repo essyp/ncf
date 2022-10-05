@@ -156,7 +156,7 @@ class AuthController extends Controller
             $user->password = bcrypt($request->password);
 
             if($user->save()){
-                $this->ActivationMail("Account Activation", $request->email, $request->first_name.' '.$request->last_name, $link);
+                $this->ActivationMail("Account Activation", $request->email, $request->first_name.' '.$request->last_name, $link, $user);
                 $data = User::where('id', $user->id)->with('country', 'state', 'city')->first();
             $response = array(
                 "status" => 200,
@@ -185,7 +185,7 @@ class AuthController extends Controller
         return $id;
     }
 
-    public function ActivationMail($subject,$email,$name,$link){
+    public function ActivationMail($subject,$email,$name,$link,$user){
         $data = array(
                 'link'=> $link,
                 'name'=> $name,
@@ -197,6 +197,21 @@ class AuthController extends Controller
             $com = Company::first();
             $message->from($com->email, $com->fullname);
             $message->to($email, $name)->subject($subject);
+        });
+
+        $admin = array(
+            'name'=> $user->fname.' '.$user->lname,
+            'email'=> $user->email,
+            'phone_number'=> $user->tel,
+            'ref_id'=> $user->ref_id,
+            'address'=> $user->address,
+            'company_name'=> $user->company_name            
+        );
+
+        Mail::send('mails/registration', $admin, function($message) {
+            $com = Company::first();
+            $message->from($com->email, $com->fullname);
+            $message->to('membership@ncfnigeria.org', 'New Registration')->subject('New Registration');
         });
     }
 
